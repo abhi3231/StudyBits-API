@@ -13,7 +13,6 @@ logging.basicConfig(level=logging.DEBUG)
 
 class QuestionMatcher:
     def get_user_learning_state(self, uid: str, course: str) -> Optional[dict]:
-        logging.info("1. Fetching user learning state for user '%s' and course '%s'", uid, course)
         doc = db.collection("learning").document(uid).collection("courses").document(course).get()
         return doc.to_dict() if doc.exists else None
 
